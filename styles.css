@@ -1,0 +1,658 @@
+/* ============================================================
+   Munamii Cakery — Stylesheet
+   ============================================================ */
+
+/* ── CSS Variables ──────────────────────────────────────────── */
+:root {
+    --turquoise: #4EC7C0;
+    --turquoise-dark: #3BB3AC;
+    --pink: #F7A8C4;
+    --deep-pink: #E86A8E;
+    --chocolate: #5A3E36;
+    --cream: #FFF7F2;
+    --soft-yellow: #FCE7A0;
+    --font-heading: "Baloo 2", cursive;
+    --font-accent: "Pacifico", cursive;
+    --font-body: "Nunito", sans-serif;
+}
+
+/* ── Reset & Base ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--chocolate);
+    background-color: var(--cream);
+    /* Subtle repeating pastel dots pattern using layered radial gradients */
+    background-image:
+        radial-gradient(circle, rgba(247, 168, 196, 0.12) 1px, transparent 1px),
+        radial-gradient(circle, rgba(78, 199, 192, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px, 30px 30px;
+    background-position: 0 0, 10px 10px;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.siteHeader {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 247, 242, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(90, 62, 54, 0.08);
+}
+
+.headerInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 16px;
+}
+
+.logo {
+    max-height: 56px;
+    width: auto;
+}
+
+.mainNav {
+    display: flex;
+    align-items: center;
+}
+
+.navList {
+    display: flex;
+    gap: 24px;
+}
+
+.navLink {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.navLink:hover {
+    color: var(--turquoise-dark);
+}
+
+/* Hamburger toggle — visible only on mobile */
+.navToggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.navToggleBar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: var(--chocolate);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Cart button in header */
+.cartButton {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: var(--chocolate);
+}
+
+.cartIcon {
+    display: block;
+}
+
+/* Badge showing item count */
+.cartBadge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: var(--deep-pink);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+}
+
+/* Hide badge when cart is empty */
+.cartBadge[data-count="0"] {
+    display: none;
+}
+
+/* ── Hero Section ──────────────────────────────────────────── */
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Semi-transparent overlay for text readability */
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 24px;
+    max-width: 700px;
+}
+
+.heroHeading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 12px;
+}
+
+.heroSubheading {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 48px;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.ctaButton {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(to bottom, var(--turquoise), var(--turquoise-dark));
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.2s;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.ctaButton:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+}
+
+.ctaButton:active {
+    transform: translateY(0);
+}
+
+.secondaryButton {
+    display: inline-block;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--turquoise-dark);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid var(--turquoise);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.secondaryButton:hover {
+    background: rgba(78, 199, 192, 0.1);
+}
+
+.dangerButton {
+    display: inline-block;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--deep-pink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--deep-pink);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dangerButton:hover {
+    background: rgba(232, 106, 142, 0.1);
+}
+
+/* ── Section Titles ────────────────────────────────────────── */
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    text-align: center;
+    color: var(--chocolate);
+    margin-bottom: 8px;
+}
+
+.categoryTitle {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--deep-pink);
+    margin: 32px 0 20px;
+}
+
+/* ── About Section ─────────────────────────────────────────── */
+.aboutSection {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 16px;
+    text-align: center;
+}
+
+.aboutText {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 12px;
+}
+
+/* ── Products Section ──────────────────────────────────────── */
+.productsSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 16px;
+}
+
+/* Responsive grid — mobile-first single column */
+.productGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* ── Product Card ──────────────────────────────────────────── */
+.productCard {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(90, 62, 54, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.productCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(90, 62, 54, 0.15);
+}
+
+.productImage {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.productInfo {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.productName {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--chocolate);
+}
+
+.productPrice {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--chocolate);
+}
+
+.productCard .ctaButton {
+    margin-top: auto;
+    align-self: stretch;
+    text-align: center;
+}
+
+/* ── Contact Section ───────────────────────────────────────── */
+.contactSection {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 16px;
+    text-align: center;
+}
+
+.contactText {
+    font-size: 1.05rem;
+    margin-top: 8px;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.siteFooter {
+    background-color: var(--chocolate);
+    color: var(--cream);
+    padding: 40px 16px;
+    text-align: center;
+}
+
+.footerInner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footerLogo {
+    max-height: 40px;
+    width: auto;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 16px;
+    font-size: 1rem;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 247, 242, 0.15);
+    color: var(--cream);
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: background 0.2s;
+}
+
+.socialLink:hover {
+    background: rgba(255, 247, 242, 0.3);
+}
+
+.footerPhone {
+    font-size: 0.95rem;
+}
+
+.footerCopyright {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ── Modal Overlay ─────────────────────────────────────────── */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modalOverlay[hidden] {
+    display: none;
+}
+
+.modalContent {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 12px 40px rgba(90, 62, 54, 0.2);
+}
+
+.modalClose {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--chocolate);
+    padding: 4px;
+}
+
+.modalTitle {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: var(--chocolate);
+}
+
+/* ── Cart Modal ────────────────────────────────────────────── */
+.cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-bottom: 1px solid rgba(90, 62, 54, 0.08);
+}
+
+.cartItemImage {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cartItemDetails {
+    flex: 1;
+}
+
+.cartItemName {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cartItemPrice {
+    font-size: 0.85rem;
+    color: var(--chocolate);
+    opacity: 0.7;
+}
+
+.cartItemControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantityButton {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--turquoise);
+    background: transparent;
+    color: var(--turquoise-dark);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+}
+
+.quantityButton:hover {
+    background: var(--turquoise);
+    color: #fff;
+}
+
+.cartItemQuantity {
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+.removeButton {
+    background: none;
+    border: none;
+    color: var(--deep-pink);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.removeButton:hover {
+    text-decoration: underline;
+}
+
+.cartSummary {
+    padding: 12px 0;
+    border-top: 2px solid rgba(90, 62, 54, 0.1);
+    margin-bottom: 16px;
+}
+
+.cartTotal {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    text-align: right;
+    color: var(--chocolate);
+}
+
+.cartActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.cartEmptyMessage {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 1.05rem;
+    opacity: 0.7;
+}
+
+/* ── Success Modal ─────────────────────────────────────────── */
+.successModal {
+    text-align: center;
+    max-width: 400px;
+}
+
+.successText {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    color: var(--chocolate);
+}
+
+/* ── Focus Styles ──────────────────────────────────────────── */
+:focus-visible {
+    outline: 3px solid var(--turquoise);
+    outline-offset: 2px;
+}
+
+/* ── Responsive: ≥600px — two-column product grid ──────────── */
+@media (min-width: 600px) {
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Responsive: ≥1024px — four-column product grid ────────── */
+@media (min-width: 1024px) {
+    .productGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ── Responsive: Mobile nav (below 600px) ──────────────────── */
+@media (max-width: 599px) {
+    .navToggle {
+        display: flex;
+    }
+
+    .mainNav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 247, 242, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 16px;
+        box-shadow: 0 4px 12px rgba(90, 62, 54, 0.1);
+    }
+
+    .mainNav.open {
+        display: flex;
+    }
+
+    .navList {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        text-align: center;
+    }
+}

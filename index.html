@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munamii Cakery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&family=Pacifico&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Sticky header with logo, navigation, and cart button -->
+    <header class="siteHeader" id="siteHeader">
+        <div class="headerInner">
+            <a href="#home" class="logoLink">
+                <img
+                    src="images/logo.png"
+                    alt="Munamii Cakery logo"
+                    class="logo"
+                >
+            </a>
+            <button
+                class="navToggle"
+                id="navToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+            >
+                <span class="navToggleBar"></span>
+                <span class="navToggleBar"></span>
+                <span class="navToggleBar"></span>
+            </button>
+            <nav class="mainNav" id="mainNav" aria-label="Main navigation">
+                <ul class="navList">
+                    <li><a href="#home" class="navLink">Home</a></li>
+                    <li><a href="#about" class="navLink">About</a></li>
+                    <li><a href="#products" class="navLink">Products</a></li>
+                    <li><a href="#contact" class="navLink">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cartButton" id="cartButton" aria-label="Open cart">
+                <svg
+                    class="cartIcon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <span class="cartBadge" id="cartBadge" aria-live="polite">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero section with background image and overlay -->
+        <section id="home" class="heroSection">
+            <img
+                src="images/hero image.jpg"
+                alt="Beautifully decorated cakes"
+                class="heroImage"
+            >
+            <div class="heroOverlay"></div>
+            <div class="heroContent">
+                <h1 class="heroHeading">Munamii Cakery</h1>
+                <p class="heroSubheading">Cupcakes &amp; wedding cakes!</p>
+                <a href="#products" class="ctaButton">View Products</a>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="aboutSection">
+            <h2 class="sectionTitle">About Us</h2>
+            <p class="aboutText">
+                At Munamii Cakery, we craft every cake and cupcake with love,
+                using the finest ingredients to make your special moments even sweeter.
+                We have been in the pastry market for 8 years.
+            </p>
+        </section>
+
+        <!-- Products section — grids are populated by script.js -->
+        <section id="products" class="productsSection">
+            <h2 class="sectionTitle">Our Products</h2>
+
+            <h3 class="categoryTitle">Cupcakes</h3>
+            <div class="productGrid" id="cupcakeGrid"></div>
+
+            <h3 class="categoryTitle">Wedding Cakes</h3>
+            <div class="productGrid" id="weddingCakeGrid"></div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" class="contactSection">
+            <h2 class="sectionTitle">Contact Us</h2>
+            <p class="contactText">Phone: 0123456789</p>
+            <p class="contactText">We'd love to hear from you!</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <img
+                src="images/logo.png"
+                alt="Munamii Cakery logo"
+                class="footerLogo"
+            >
+            <div class="socialIcons" aria-label="Social media links">
+                <a href="https://facebook.com" aria-label="Facebook" class="socialLink">FB</a>
+                <a href="https://instagram.com" aria-label="Instagram" class="socialLink">IG</a>
+            </div>
+            <p class="footerPhone">
+                <a href="mailto:firstname.surname@email.com">firstname.surname@email.com</a>
+            </p>
+            <p class="footerCopyright">&copy; 2026 Munamii Cakery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart modal -->
+    <div
+        class="modalOverlay"
+        id="cartModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Shopping cart"
+        hidden
+    >
+        <div class="modalContent cartModal">
+            <button
+                class="modalClose"
+                id="closeCartModal"
+                aria-label="Close cart"
+            >&times;</button>
+            <h2 class="modalTitle">Items in your cart</h2>
+            <div class="cartItems" id="cartItems"></div>
+            <div class="cartSummary" id="cartSummary"></div>
+            <div class="cartActions" id="cartActions">
+                <button class="ctaButton" id="checkoutButton">Checkout</button>
+                <button class="secondaryButton" id="continueShoppingButton">Continue shopping</button>
+                <button class="dangerButton" id="clearCartButton">Clear cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success modal shown after checkout -->
+    <div
+        class="modalOverlay"
+        id="successModal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Order confirmation"
+        hidden
+    >
+        <div class="modalContent successModal">
+            <h2 class="modalTitle">Order placed!</h2>
+            <p class="successText">Your delicious treats are on the way.</p>
+            <button class="ctaButton" id="closeSuccessModal">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>
